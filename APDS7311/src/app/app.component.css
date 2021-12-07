@@ -1,0 +1,25 @@
+main {
+  width: 80%;
+  margin: 16px auto;
+}
+
+.spacer{
+  flex: 1 1 auto;
+}
+
+a {
+  color:white;
+  text-decoration: none;
+  font-size: medium;
+  ;
+}
+a:hover {
+  color: deeppink;
+}
+
+li {
+  list-style: none;
+}
+
+
+

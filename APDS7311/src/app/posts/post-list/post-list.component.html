@@ -1,0 +1,22 @@
+<h2>View Posts</h2>
+<p><b>Note:</b> You may only delete/edit posts created with the same account</p>
+<mat-accordion multi="true" *ngIf = "posts.length > 0">
+<mat-expansion-panel *ngFor= "let post of posts" hideToggle>
+  <mat-expansion-panel-header>
+    <mat-icon>account_circle</mat-icon>
+    <mat-panel-title>
+      {{post.title}}
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+      {{post.content}}
+    <mat-action-row *ngIf= "userIsAuthenticated && userId == post.creator">
+      <a mat-raised-button color = "accent" [routerLink] = "['/edit', post.id]">EDIT</a>
+      <button mat-raised-button color = "warn" (click)= "onDelete(post.id)" >DELETE</button>
+    </mat-action-row>
+</mat-expansion-panel>
+</mat-accordion>
+<br>
+<mat-paginator [length] = "totalPosts" [pageSize] = "postsPerPage" [pageSizeOptions] = "pageSizeOptions" (page) = "onChangedPage($event)"
+*ngIf = "posts.length > 0"></mat-paginator>
+<p class= "infor-text mat-body-1" *ngIf = "posts.length <= 0">No posts added yet</p>
+
